@@ -16,8 +16,8 @@ $(document).keypress(function(){
 $(".btn").click(function(event){
   var userChosenColor = event.currentTarget.id;
   userClickedPattern.push(userChosenColor);
-  animatePress(userChosenColor);
   playSound(userChosenColor);
+  animatePress(userChosenColor);
   checkAnswer(userClickedPattern.length-1);
 });
 
@@ -34,7 +34,7 @@ function checkAnswer(currentLevel){
     $("body").addClass("game-over").removeClass(setTimeout(function(){
       $("body").removeClass("game-over");
     }, 200));
-    $("#level-title").text("Game Over, Press Any Key to REstart");
+    $("#level-title").text("Game Over, Press Any Key to Restart");
     var wrong = new Audio("sounds/wrong.mp3");
     wrong.play();
     startOver();
@@ -55,8 +55,8 @@ function nextSequence() {
   var randomNumber = Math.floor(Math.random()*4);
   var randomChosenColor = buttonColors[randomNumber];
   gamePattern.push(randomChosenColor);
-  $("#" + randomChosenColor).fadeIn(100).fadeOut(100).fadeIn(100);
   playSound(randomChosenColor);
+  $("#" + randomChosenColor).fadeIn(100).fadeOut(100).fadeIn(100);
   $("#level-title").text(`Level ${level}`);
 }
 
